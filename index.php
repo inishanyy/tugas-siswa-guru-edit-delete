@@ -17,60 +17,45 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-        <a class="nav-link" href="kelola.php">Pendaftaran</a>
+        <a class="nav-link" href="form-daftar.php">Pendaftaran</a>
       </div>
     </div>
   </div>
 </nav>
     <div class="container mt-4">
-        <h2>Data Siswa</h2><br>
-        <a class="btn btn-primary" href="kelola.php" role="button">Tambah Data</a>
+        <h2>Data Guru</h2><br>
+        <a class="btn btn-primary" href="form-daftar.php" role="button">Tambah Data Guru</a>
         <br><br>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nama</th>
-                    <th>Alamat</th>
                     <th>Jenis Kelamin</th>
-                    <th>Agama</th>
-                    <th>Sekolah Asal</th>
-                    <th>tanggal_lahir</th>
-                    <th>no_telepon</th>
-                    <th>desa</th>
-                    <th>kecamatan</th>
-                    <th>kota</th>
-                    <th>provinsi</th>
-                    <th>kode_pos</th>
+                    <th>Alamat</th>
+                    <th>No Telepon</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM pendaftaran";
+                $sql = "SELECT * FROM guru";
                 $query = mysqli_query($db, $sql);
-                while($siswa = mysqli_fetch_array($query)) {
+                while($guru = mysqli_fetch_array($query)) {
                     echo "<tr>";
-                    echo "<td>".$siswa['id_pendaftaran']."</td>";
-                    echo "<td>".$siswa['nama']."</td>";
-                    echo "<td>".$siswa['alamat']."</td>";
-                    echo "<td>".$siswa['jenis_kelamin']."</td>";
-                    echo "<td>".$siswa['agama']."</td>";
-                    echo "<td>".$siswa['sekolah_asal']."</td>";
-                    echo "<td>".$siswa['tanggal_lahir']."</td>";
-                    echo "<td>".$siswa['no_tel']."</td>";
-                    echo "<td>".$siswa['desa']."</td>";
-                    echo "<td>".$siswa['kecamatan']."</td>";
-                    echo "<td>".$siswa['kota']."</td>";
-                    echo "<td>".$siswa['provinsi']."</td>";
-                    echo "<td>".$siswa['kode_pos']."</td>";
-
-                    echo "<td> 
-                    <a href='kelola.php?edit=" . $siswa['id_pendaftaran'] . "' class='btn btn-warning'>Edit  </a>
-                    <a href='proses.php?hapus=" . $siswa['id_pendaftaran'] . "' class='btn btn-danger'>Delete</a>
+                    echo "<td>".$guru['id_guru']."</td>";
+                    echo "<td>".$guru['nama']."</td>";
+                    echo "<td>".$guru['jk']."</td>";
+                    echo "<td>".$guru['alamat']."</td>";
+                    echo "<td>".$guru['no_tel']."</td>";
+                    echo "<td>".$guru['email']."</td>";
+                    echo "<td>
+                    <a href='form-daftar.php?edit=" . $guru['id_guru'] . "' class='btn btn-warning'>Edit</a>
+                    <a href='proses-pendaftaran.php?hapus=" . $guru['id_guru'] . "' class='btn btn-danger'>Delete</a>
                           </td>";
-                   echo"</tr>";
+                    echo "</tr>";
                 }
-                
                 ?>
             </tbody>
         </table>
